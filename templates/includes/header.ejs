@@ -2,15 +2,24 @@
   <div class="site-header">
     <div class="left">
       <a href="<%= themeConfig.domain %>">
-        <img class="avatar" src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" alt="" width="32px" height="32px">
+        <img class="avatar" src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" alt=""
+          width="32px" height="32px">
       </a>
       <a href="<%= themeConfig.domain %>">
-        <h1 class="site-title"><%= themeConfig.siteName %></h1>
+        <h1 class="site-title">
+          <%= themeConfig.siteName %>
+        </h1>
       </a>
     </div>
     <div class="right">
+      <div class="gridea-search-div" v-if="headSearchShow">
+        <form id="gridea-search-form" action="<%= themeConfig.domain %>/search/">
+          <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q" />
+        </form>
+      </div>
       <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }"
+          @click="menuClick()"></i>
       </transition>
     </div>
   </div>
@@ -19,17 +28,22 @@
 <transition name="fade">
   <div class="menu-container" style="display: none;" v-show="menuVisible">
     <div class="menu-list">
+      <div class="gridea-search-div" v-if="menuSearchShow">
+        <form id="gridea-search-form" action="<%= themeConfig.domain %>/search/">
+          <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q" />
+        </form>
+      </div>
       <% menus.forEach(function(menu) { %>
-        <% if (menu.openType === 'External') { %>
+        <% if (menu.openType==='External' ) { %>
           <a class="menu purple-link" href="<%= menu.link %>" class="menu" target="_blank">
             <%= menu.name %>
           </a>
-        <% } else { %>
-          <a href="<%= menu.link %>" class="menu purple-link">
-            <%= menu.name %>
-          </a>
-        <% } %>
-      <% }); %>
+          <% } else { %>
+            <a href="<%= menu.link %>" class="menu purple-link">
+              <%= menu.name %>
+            </a>
+            <% } %>
+              <% }); %>
     </div>
   </div>
 </transition>

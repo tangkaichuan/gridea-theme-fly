@@ -1,17 +1,6 @@
-<script type="application/javascript">
+<script src="<%= themeConfig.domain %>/media/scripts/index.js"></script>
 
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
-</script>
-
-<% if (typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+<% if (typeof commentSetting !=='undefined' && commentSetting.showComment) { %>
 
   <% if (commentSetting.commentPlatform === 'gitalk') { %>
     <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
