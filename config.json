@@ -2,6 +2,7 @@
   "name": "Fly-Mod",
   "version": "1.0.0",
   "author": "tangkaichuan",
+  "repository": "https://github.com/tangkaichuan/gridea-theme-fly",
   "customConfig": [
     {
       "name": "skin",
